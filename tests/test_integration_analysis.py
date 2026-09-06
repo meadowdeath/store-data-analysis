@@ -1,8 +1,10 @@
 import pandas as pd
 
 from store_data_analysis.analysis.integration_analysis import (
+    get_client_purchase_counts,
     get_category_with_highest_revenue,
     get_client_with_most_purchases,
+    get_primate_sales_performance,
     get_product_with_highest_revenue,
     get_total_store_revenue,
     integrate_data,
@@ -163,3 +165,24 @@ def test_get_total_store_revenue():
     )
 
     assert result == 800
+
+
+def test_get_primate_sales_performance():
+    sales, clients, products = create_test_data()
+    integrated = integrate_data(sales, clients, products)
+
+    result = get_primate_sales_performance(integrated)
+
+    assert result.loc[0, "product_name"] == "Capuchino"
+    assert result.loc[0, "total_quantity"] == 3
+    assert result.loc[0, "total_revenue"] == 300
+
+
+def test_get_client_purchase_counts():
+    sales, clients, products = create_test_data()
+    integrated = integrate_data(sales, clients, products)
+
+    result = get_client_purchase_counts(integrated)
+
+    assert result.loc[0, "client_name"] == "Client One"
+    assert result.loc[0, "purchase_count"] == 2

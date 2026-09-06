@@ -1,0 +1,32 @@
+# Ignore everything by default
+*
+
+# Allow Git to traverse directories
+!*/
+
+# Python source files
+!*.py
+
+# Project configuration / documentation
+!.gitignore
+!.gitattributes
+!README.md
+!requirements.txt
+!pyproject.toml
+
+# Required source data
+!datos/ventas.csv
+!datos/clientes.json
+!datos/productos.sql
+!datos/comentarios.txt
+!datos/tienda.db
+
+# Required analysis output
+!analisis/ventas_analizadas.csv
+!analisis/resultados.xlsx
+
+# Required SQL queries
+!consultas/consultas.sql
+
+# Required final report
+!reporte.pdf

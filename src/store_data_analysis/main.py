@@ -12,8 +12,10 @@ from store_data_analysis.analysis.comments_analysis import (
     get_most_common_problem,
 )
 from store_data_analysis.analysis.integration_analysis import (
+    get_client_purchase_counts,
     get_category_with_highest_revenue,
     get_client_with_most_purchases,
+    get_primate_sales_performance,
     get_product_with_highest_revenue,
     get_total_store_revenue,
     integrate_data,
@@ -56,8 +58,12 @@ from store_data_analysis.generators.generate_sales import (
 
 from store_data_analysis.reports.console_report import (
     print_clients_summary,
+    print_classified_comment_details,
+    print_client_purchase_counts,
     print_comments_summary,
+    print_integrated_sales_details,
     print_integration_summary,
+    print_primate_sales_performance,
     print_products_summary,
     print_sales_summary,
 )
@@ -176,6 +182,14 @@ def main():
         integrated
     )
 
+    primate_sales_performance = get_primate_sales_performance(
+        integrated
+    )
+
+    client_purchase_counts = get_client_purchase_counts(
+        integrated
+    )
+
     print_sales_summary(
         total_sales,
         highest_sale,
@@ -211,6 +225,20 @@ def main():
         category_with_highest_revenue,
         total_store_revenue,
     )
+
+    print_primate_sales_performance(
+        primate_sales_performance,
+    )
+
+    print_client_purchase_counts(
+        client_purchase_counts,
+    )
+
+    print_classified_comment_details(
+        classified_comments,
+    )
+
+    print_integrated_sales_details(integrated)
 
     summary = {
         "total_revenue": total_store_revenue,

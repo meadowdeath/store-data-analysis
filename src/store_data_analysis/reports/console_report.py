@@ -114,3 +114,34 @@ def print_integration_summary(
         f"Total store revenue: "
         f"${total_store_revenue:,.2f}"
     )
+
+
+def print_primate_sales_performance(performance):
+    print("\n=== PRIMATE SALES PERFORMANCE ===")
+    print(performance.to_string(index=False))
+
+
+def print_client_purchase_counts(purchases):
+    print("\n=== CLIENT PURCHASE COUNTS ===")
+    print(purchases.to_string(index=False))
+
+
+def print_classified_comment_details(classified_comments):
+    print("\n=== CLASSIFIED COMMENTS ===")
+
+    for item in classified_comments:
+        print(f"[{item['classification']}] {item['comment']}")
+
+
+def print_integrated_sales_details(integrated):
+    columns = [
+        "sale_id",
+        "client_name",
+        "product_name",
+        "category",
+        "quantity",
+        "amount",
+    ]
+
+    print("\n=== INTEGRATED SALES DETAILS ===")
+    print(integrated[columns].to_string(index=False))
